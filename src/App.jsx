@@ -3,15 +3,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 import Videos from './pages/Videos';
+import Root from './pages/Root';
+
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <Root />,
     errorElement: <NotFound />,
-  },
-  {
-    path: '/videos',
-    element: <Videos />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'videos', element: <Videos /> },
+    ],
   },
 ]);
 
